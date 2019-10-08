@@ -38,6 +38,7 @@ namespace csharp
                             break;
 
                         case (int)Helper.ProductType.Conjured:
+                            product.Quality = (product.Quality > 1 ? product.Quality - 2 : 0);
                             break;
 
                         case (int)Helper.ProductType.Normal:
