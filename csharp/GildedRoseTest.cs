@@ -57,5 +57,23 @@ namespace csharp
             Assert.AreEqual(35, Items[3].Quality);
         }
 
+        [Test]
+        public void NonNegativeQualityAfter5Days()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Prod 1", SellIn = 2, Quality = 5 },
+                                                 new Item { Name = "Backstage Passes 2", SellIn = 3, Quality = 10},
+                                                 new Item { Name = "Conjured 3", SellIn = 3, Quality = 5 },
+                                                 new Item { Name = "Sulfuras 4", SellIn = 3, Quality = 80 }};
+
+            GildedRose app = new GildedRose(Items);
+
+            for (int i = 0; i < 5; i++) app.UpdateQuality();
+
+            Assert.Zero(Items[0].Quality);
+            Assert.Zero(Items[1].Quality);
+            Assert.Zero(Items[2].Quality);
+            Assert.AreEqual(80, Items[3].Quality);
+        }
+
     }
 }
