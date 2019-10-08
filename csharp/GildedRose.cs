@@ -42,6 +42,7 @@ namespace csharp
                             break;
 
                         case (int)Helper.ProductType.Normal:
+                            if (product.SellIn < 0 && product.Quality > 0) product.Quality--;
                             if (product.Quality > 0) product.Quality--;
                             break;
 
