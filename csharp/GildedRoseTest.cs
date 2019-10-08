@@ -39,5 +39,23 @@ namespace csharp
             Assert.AreEqual(3, Items[2].Quality);
         }
 
+        [Test]
+        public void BackstagePassesItemsQualityAfter5Days()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Backstage Passes 1", SellIn = 20, Quality = 20 },
+                                                 new Item { Name = "Backstage Passes 2", SellIn = 13, Quality = 20 },
+                                                 new Item { Name = "Backstage Passes 3", SellIn = 6, Quality = 20 },
+                                                 new Item { Name = "Backstage Passes 4", SellIn = 5, Quality = 20 }};
+
+            GildedRose app = new GildedRose(Items);
+
+            for (int i = 0; i < 5; i++) app.UpdateQuality();
+
+            Assert.AreEqual(25, Items[0].Quality);
+            Assert.AreEqual(27, Items[1].Quality);
+            Assert.AreEqual(34, Items[2].Quality);
+            Assert.AreEqual(35, Items[3].Quality);
+        }
+
     }
 }
