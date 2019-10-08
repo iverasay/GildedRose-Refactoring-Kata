@@ -23,6 +23,7 @@ namespace csharp
                     switch (productType)
                     {
                         case (int)Helper.ProductType.AgedBrie:
+                            if (product.Quality < 50) product.Quality++;
                             break;
 
                         case (int)Helper.ProductType.BackstagePasses:                          
