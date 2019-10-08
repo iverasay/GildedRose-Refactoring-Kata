@@ -27,13 +27,13 @@ namespace csharp
                             break;
 
                         case (int)Helper.ProductType.BackstagePasses:
-                            if (product.SellIn > 10 && product.Quality < 50)
+                            if (product.SellIn >= 10 && product.Quality < 50)
                                 product.Quality++;
                             else if (product.SellIn < 0) // I supposed that the concert is when sellIn is 0
                                 product.Quality = 0;
-                            else if (product.SellIn <= 5)
+                            else if (product.SellIn < 5)
                                 product.Quality = (product.Quality < 48 ? product.Quality + 3 : 50);
-                            else if (product.SellIn <= 10)
+                            else if (product.SellIn < 10)
                                 product.Quality = (product.Quality < 49 ? product.Quality + 2 : 50);
                             break;
 
